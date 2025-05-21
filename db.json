@@ -1,6 +1,12 @@
- {
+{
   "nivelesCarrera": [
-    { "id": 1, "nombre": "Licenciatura / Ingeniería" },
-    { "id": 2, "nombre": "Maestría" }
+    {
+      "id": "1",
+      "nombre": "Licenciatura / Ingeniería"
+    },
+    {
+      "id": "2",
+      "nombre": "Maestría"
+    }
   ]
-}   
+}

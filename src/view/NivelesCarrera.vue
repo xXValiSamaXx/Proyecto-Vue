@@ -1,17 +1,65 @@
 <template>
-  <div>
-    <h1>Gestión de Niveles de Carrera</h1>
-    <form @submit.prevent="handleSubmit">
-      <input v-model="datosForm.nombre" placeholder="Nombre del nivel" required />
-      <button type="submit">{{ editMode ? 'Actualizar' : 'Agregar' }}</button>
-    </form>
-    <ul>
-      <li v-for="nivel in niveles" :key="nivel.id">
-        {{ nivel.nombre }}
-        <button @click="editNivel(nivel)">Editar</button>
-        <button @click="deleteNivel(nivel.id)">Eliminar</button>
-      </li>
-    </ul>
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Gestión de Niveles de Carrera</h2>
+          </div>
+          <div class="card-body">
+            <form @submit.prevent="handleSubmit" class="mb-4">
+              <div class="input-group">
+                <input 
+                  v-model="datosForm.nombre" 
+                  class="form-control" 
+                  placeholder="Nombre del nivel" 
+                  required 
+                />
+                <button 
+                  type="submit" 
+                  class="btn btn-primary"
+                >
+                  {{ editMode ? 'Actualizar' : 'Agregar' }}
+                </button>
+              </div>
+            </form>
+            
+            <div class="table-responsive">
+              <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="nivel in niveles" :key="nivel.id">
+                    <td>{{ nivel.nombre }}</td>
+                    <td>
+                      <button 
+                        @click="editNivel(nivel)" 
+                        class="btn btn-sm btn-warning me-2"
+                      >
+                        <i class="bi bi-pencil"></i> Editar
+                      </button>
+                      <button 
+                        @click="deleteNivel(nivel.id)" 
+                        class="btn btn-sm btn-danger"
+                      >
+                        <i class="bi bi-trash"></i> Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                  <tr v-if="niveles.length === 0">
+                    <td colspan="2" class="text-center">No hay niveles disponibles</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -120,34 +168,5 @@ export default {
 </script>
 
 <style scoped>
-form {
-  margin-bottom: 20px;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-}
-li button {
-  margin-left: 10px;
-}
-input {
-  padding: 8px;
-  margin-right: 10px;
-}
-button {
-  padding: 8px 12px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #45a049;
-}
+/* Los estilos personalizados adicionales pueden ir aquí */
 </style>
